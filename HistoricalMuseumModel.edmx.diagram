@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="16e652bd9f4c48dcaea8abf8d9e696a6" Name="Diagram1">
+        <EntityTypeShape EntityType="HistoricalMuseumModel.Authors" Width="1.5" PointX="0.75" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="HistoricalMuseumModel.Countries" Width="1.5" PointX="0.75" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="HistoricalMuseumModel.Exhibits" Width="1.5" PointX="3" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="HistoricalMuseumModel.ExhibitsInHalls" Width="1.5" PointX="5.25" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="HistoricalMuseumModel.ExhibitsInStoreroom" Width="1.5" PointX="5.25" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="HistoricalMuseumModel.ExhibitsTypes" Width="1.5" PointX="0.75" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="HistoricalMuseumModel.Halls" Width="1.5" PointX="3" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="HistoricalMuseumModel.HallsInTourPrograms" Width="1.5" PointX="10" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="HistoricalMuseumModel.HistoricalEpochs" Width="1.5" PointX="0.75" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="HistoricalMuseumModel.Posts" Width="1.5" PointX="5.5" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HistoricalMuseumModel.Staff" Width="1.5" PointX="7.75" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="HistoricalMuseumModel.TourEntries" Width="1.5" PointX="10" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="HistoricalMuseumModel.TourPrograms" Width="1.5" PointX="7.75" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="HistoricalMuseumModel.Users" Width="1.5" PointX="9.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HistoricalMuseumModel.GuidedToursView" Width="1.5" PointX="2.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HistoricalMuseumModel.PopulariryPfProgram" Width="1.5" PointX="4.75" PointY="10.75" IsExpanded="true" />
+        <AssociationConnector Association="HistoricalMuseumModel.FK__Экспонаты__Автор__4222D4EF" ManuallyRouted="false" />
+        <AssociationConnector Association="HistoricalMuseumModel.FK__Экспонаты__Стран__412EB0B6" ManuallyRouted="false" />
+        <AssociationConnector Association="HistoricalMuseumModel.FK__Экспонаты__Истор__403A8C7D" ManuallyRouted="false" />
+        <AssociationConnector Association="HistoricalMuseumModel.FK__Экспонаты__Экспо__47DBAE45" ManuallyRouted="false" />
+        <AssociationConnector Association="HistoricalMuseumModel.FK__Экспонаты__Экспо__49C3F6B7" ManuallyRouted="false" />
+        <AssociationConnector Association="HistoricalMuseumModel.FK_Экспонаты_Тип" ManuallyRouted="false" />
+        <AssociationConnector Association="HistoricalMuseumModel.FK__Экспонаты_п__Зал__45F365D3" ManuallyRouted="false" />
+        <AssociationConnector Association="HistoricalMuseumModel.FK__Залы_в_экск__Зал__3B75D760" ManuallyRouted="false" />
+        <AssociationConnector Association="HistoricalMuseumModel.FK__HallsInTo__TourP__45F365D3" ManuallyRouted="false" />
+        <AssociationConnector Association="HistoricalMuseumModel.FK__Staff__Post__47DBAE45" ManuallyRouted="false" />
+        <AssociationConnector Association="HistoricalMuseumModel.FK__TourEntri__Guide__48CFD27E" ManuallyRouted="false" />
+        <AssociationConnector Association="HistoricalMuseumModel.FK__TourEntri__TourP__49C3F6B7" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,456 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{503B01E1-8DD3-452E-B14E-77A0D3BB22F2}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>HistoricalMuseum</RootNamespace>
+    <AssemblyName>HistoricalMuseum</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>icon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Authors.cs">
+      <DependentUpon>HistoricalMuseumModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AuthPage.xaml.cs">
+      <DependentUpon>AuthPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Countries.cs">
+      <DependentUpon>HistoricalMuseumModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Exhibits.cs">
+      <DependentUpon>HistoricalMuseumModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExhibitsInHalls.cs">
+      <DependentUpon>HistoricalMuseumModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExhibitsInStoreroom.cs">
+      <DependentUpon>HistoricalMuseumModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExhibitsTypes.cs">
+      <DependentUpon>HistoricalMuseumModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GuidedToursView.cs">
+      <DependentUpon>HistoricalMuseumModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Halls.cs">
+      <DependentUpon>HistoricalMuseumModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HallsInTourPrograms.cs">
+      <DependentUpon>HistoricalMuseumModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HistoricalEpochs.cs">
+      <DependentUpon>HistoricalMuseumModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HistoricalMuseumModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HistoricalMuseumModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HistoricalMuseumModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HistoricalMuseumModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HistoricalMuseumModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HistoricalMuseumModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Tables\AddPages\AddTourProgramPage.xaml.cs">
+      <DependentUpon>AddTourProgramPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Tables\AddPages\AddTourEntriesPage.xaml.cs">
+      <DependentUpon>AddTourEntriesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Tables\AddPages\AddStaffPage.xaml.cs">
+      <DependentUpon>AddStaffPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Tables\AddPages\AddHallsPage.xaml.cs">
+      <DependentUpon>AddHallsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Tables\AddPages\AddHallsInTourProgramsPage.xaml.cs">
+      <DependentUpon>AddHallsInTourProgramsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Tables\AddPages\AddEpochPage.xaml.cs">
+      <DependentUpon>AddEpochPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Tables\AddPages\AddPostPage.xaml.cs">
+      <DependentUpon>AddPostPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Tables\AddPages\AddTypePage.xaml.cs">
+      <DependentUpon>AddTypePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Tables\AddPages\AddExhInHallsPage.xaml.cs">
+      <DependentUpon>AddExhInHallsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Tables\AddPages\AddExhibitsPage.xaml.cs">
+      <DependentUpon>AddExhibitsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Tables\AddPages\AddExhInStoreroomPage.xaml.cs">
+      <DependentUpon>AddExhInStoreroomPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Tables\AddPages\AddCountryPage.xaml.cs">
+      <DependentUpon>AddCountryPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Tables\AddPages\AddAuthorPage.xaml.cs">
+      <DependentUpon>AddAuthorPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\DirToursPage.xaml.cs">
+      <DependentUpon>DirToursPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\DirMuseumPage.xaml.cs">
+      <DependentUpon>DirMuseumPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\DirSectionsPage.xaml.cs">
+      <DependentUpon>DirSectionsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\AdminSectionsPage.xaml.cs">
+      <DependentUpon>AdminSectionsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Tables\AuthorsPage.xaml.cs">
+      <DependentUpon>AuthorsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Tables\TourProgramsPage.xaml.cs">
+      <DependentUpon>TourProgramsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Tables\StaffPage.xaml.cs">
+      <DependentUpon>StaffPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Tables\PostsPage.xaml.cs">
+      <DependentUpon>PostsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Tables\HallsInTourProgramsPage.xaml.cs">
+      <DependentUpon>HallsInTourProgramsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Tables\ExhibitsTypesPage.xaml.cs">
+      <DependentUpon>ExhibitsTypesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Tables\ExhibitsInStoreroomPage.xaml.cs">
+      <DependentUpon>ExhibitsInStoreroomPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Tables\CountriesPage.xaml.cs">
+      <DependentUpon>CountriesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Tables\ExhibitsPage.xaml.cs">
+      <DependentUpon>ExhibitsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\GuideSectionsPage.xaml.cs">
+      <DependentUpon>GuideSectionsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Tables\ExhibitsInHallsPage.xaml.cs">
+      <DependentUpon>ExhibitsInHallsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Tables\PopularityOfProgramPage.xaml.cs">
+      <DependentUpon>PopularityOfProgramPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Tables\GuidedToursPage.xaml.cs">
+      <DependentUpon>GuidedToursPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Tables\TourEntriesPage.xaml.cs">
+      <DependentUpon>TourEntriesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Tables\HallsPage.xaml.cs">
+      <DependentUpon>HallsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Tables\HistoricalEpochsPage.xaml.cs">
+      <DependentUpon>HistoricalEpochsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ResearcherSectionsPage.xaml.cs">
+      <DependentUpon>ResearcherSectionsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PopulariryPfProgram.cs">
+      <DependentUpon>HistoricalMuseumModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Posts.cs">
+      <DependentUpon>HistoricalMuseumModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Staff.cs">
+      <DependentUpon>HistoricalMuseumModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TourEntries.cs">
+      <DependentUpon>HistoricalMuseumModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TourPrograms.cs">
+      <DependentUpon>HistoricalMuseumModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Users.cs">
+      <DependentUpon>HistoricalMuseumModel.tt</DependentUpon>
+    </Compile>
+    <Page Include="AuthPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Tables\AddPages\AddTourProgramPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\Tables\AddPages\AddTourEntriesPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\Tables\AddPages\AddStaffPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\Tables\AddPages\AddHallsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\Tables\AddPages\AddHallsInTourProgramsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\Tables\AddPages\AddEpochPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\Tables\AddPages\AddPostPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\Tables\AddPages\AddTypePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\Tables\AddPages\AddExhInHallsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\Tables\AddPages\AddExhibitsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\Tables\AddPages\AddExhInStoreroomPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\Tables\AddPages\AddCountryPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\Tables\AddPages\AddAuthorPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\DirToursPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\DirMuseumPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\DirSectionsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\AdminSectionsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Tables\AuthorsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Tables\TourProgramsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\Tables\StaffPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\Tables\PostsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\Tables\HallsInTourProgramsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\Tables\ExhibitsTypesPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\Tables\ExhibitsInStoreroomPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\Tables\CountriesPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Tables\ExhibitsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\GuideSectionsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Tables\ExhibitsInHallsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\Tables\PopularityOfProgramPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\Tables\GuidedToursPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Tables\TourEntriesPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Tables\HallsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Pages\Tables\HistoricalEpochsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ResearcherSectionsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EntityDeploy Include="HistoricalMuseumModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>HistoricalMuseumModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="HistoricalMuseumModel.edmx.diagram">
+      <DependentUpon>HistoricalMuseumModel.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\search.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\del.png" />
+    <Resource Include="Resources\back.png" />
+    <Resource Include="Resources\add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icon.ico" />
+    <None Include="Resources\icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="HistoricalMuseumModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>HistoricalMuseumModel.edmx</DependentUpon>
+      <LastGenOutput>HistoricalMuseumModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="HistoricalMuseumModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>HistoricalMuseumModel.edmx</DependentUpon>
+      <LastGenOutput>HistoricalMuseumModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

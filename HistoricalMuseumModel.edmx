@@ -1,0 +1,885 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище HistoricalMuseumModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Authors">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FIOAuthor" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Countries">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Country" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Exhibits">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Exhibit" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="ExhibitType" Type="int" Nullable="false" />
+          <Property Name="Author" Type="int" />
+          <Property Name="HistoricalEpoch" Type="int" Nullable="false" />
+          <Property Name="CreationCountry" Type="int" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="ExhibitsInHalls">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Hall" Type="int" Nullable="false" />
+          <Property Name="Exhibit" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ExhibitsInStoreroom">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Exhibit" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ExhibitsTypes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Type" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Halls">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Theme" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="HallsInTourPrograms">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TourProgram" Type="int" Nullable="false" />
+          <Property Name="Hall" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="HistoricalEpochs">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Epoch" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Posts">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Post" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Staff">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FIOStaff" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Post" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TourEntries">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DateAndTime" Type="datetime" Nullable="false" />
+          <Property Name="TourProgram" Type="int" Nullable="false" />
+          <Property Name="Guide" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TourPrograms">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TourTheme" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="User" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "HistoricalMuseumCourseProject.dbo.GuidedToursView" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="GuidedToursView">
+          <Key>
+            <PropertyRef Name="FIOStaff" />
+          </Key>
+          <Property Name="FIOStaff" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="GuidedTours" Type="int" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "HistoricalMuseumCourseProject.dbo.PopulariryPfProgram" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="PopulariryPfProgram">
+          <Key>
+            <PropertyRef Name="TourTheme" />
+          </Key>
+          <Property Name="TourTheme" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="PupolarityOfProgram" Type="int" />
+        </EntityType>
+        <Association Name="FK__HallsInTo__TourP__45F365D3">
+          <End Role="TourPrograms" Type="Self.TourPrograms" Multiplicity="1" />
+          <End Role="HallsInTourPrograms" Type="Self.HallsInTourPrograms" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TourPrograms">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="HallsInTourPrograms">
+              <PropertyRef Name="TourProgram" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Staff__Post__47DBAE45">
+          <End Role="Posts" Type="Self.Posts" Multiplicity="1" />
+          <End Role="Staff" Type="Self.Staff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Posts">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Staff">
+              <PropertyRef Name="Post" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TourEntri__Guide__48CFD27E">
+          <End Role="Staff" Type="Self.Staff" Multiplicity="1" />
+          <End Role="TourEntries" Type="Self.TourEntries" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Staff">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="TourEntries">
+              <PropertyRef Name="Guide" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TourEntri__TourP__49C3F6B7">
+          <End Role="TourPrograms" Type="Self.TourPrograms" Multiplicity="1" />
+          <End Role="TourEntries" Type="Self.TourEntries" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TourPrograms">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="TourEntries">
+              <PropertyRef Name="TourProgram" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Залы в экск__Зал__3B75D760">
+          <End Role="Halls" Type="Self.Halls" Multiplicity="1" />
+          <End Role="HallsInTourPrograms" Type="Self.HallsInTourPrograms" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Halls">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="HallsInTourPrograms">
+              <PropertyRef Name="Hall" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Экспонаты п__Зал__45F365D3">
+          <End Role="Halls" Type="Self.Halls" Multiplicity="1" />
+          <End Role="ExhibitsInHalls" Type="Self.ExhibitsInHalls" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Halls">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ExhibitsInHalls">
+              <PropertyRef Name="Hall" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Экспонаты__Автор__4222D4EF">
+          <End Role="Authors" Type="Self.Authors" Multiplicity="0..1" />
+          <End Role="Exhibits" Type="Self.Exhibits" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Authors">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Exhibits">
+              <PropertyRef Name="Author" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Экспонаты__Истор__403A8C7D">
+          <End Role="HistoricalEpochs" Type="Self.HistoricalEpochs" Multiplicity="1" />
+          <End Role="Exhibits" Type="Self.Exhibits" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HistoricalEpochs">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Exhibits">
+              <PropertyRef Name="HistoricalEpoch" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Экспонаты__Стран__412EB0B6">
+          <End Role="Countries" Type="Self.Countries" Multiplicity="1" />
+          <End Role="Exhibits" Type="Self.Exhibits" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Countries">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Exhibits">
+              <PropertyRef Name="CreationCountry" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Экспонаты__Экспо__47DBAE45">
+          <End Role="Exhibits" Type="Self.Exhibits" Multiplicity="1" />
+          <End Role="ExhibitsInHalls" Type="Self.ExhibitsInHalls" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Exhibits">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ExhibitsInHalls">
+              <PropertyRef Name="Exhibit" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Экспонаты__Экспо__49C3F6B7">
+          <End Role="Exhibits" Type="Self.Exhibits" Multiplicity="1" />
+          <End Role="ExhibitsInStoreroom" Type="Self.ExhibitsInStoreroom" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Exhibits">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ExhibitsInStoreroom">
+              <PropertyRef Name="Exhibit" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Экспонаты_Тип">
+          <End Role="ExhibitsTypes" Type="Self.ExhibitsTypes" Multiplicity="1" />
+          <End Role="Exhibits" Type="Self.Exhibits" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExhibitsTypes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Exhibits">
+              <PropertyRef Name="ExhibitType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище HistoricalMuseumModelContainer">
+          <EntitySet Name="Authors" EntityType="Self.Authors" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Countries" EntityType="Self.Countries" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Exhibits" EntityType="Self.Exhibits" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ExhibitsInHalls" EntityType="Self.ExhibitsInHalls" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ExhibitsInStoreroom" EntityType="Self.ExhibitsInStoreroom" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ExhibitsTypes" EntityType="Self.ExhibitsTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Halls" EntityType="Self.Halls" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HallsInTourPrograms" EntityType="Self.HallsInTourPrograms" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HistoricalEpochs" EntityType="Self.HistoricalEpochs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Posts" EntityType="Self.Posts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Staff" EntityType="Self.Staff" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TourEntries" EntityType="Self.TourEntries" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TourPrograms" EntityType="Self.TourPrograms" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GuidedToursView" EntityType="Self.GuidedToursView" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [GuidedToursView].[FIOStaff] AS [FIOStaff], 
+    [GuidedToursView].[GuidedTours] AS [GuidedTours]
+    FROM [dbo].[GuidedToursView] AS [GuidedToursView]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="PopulariryPfProgram" EntityType="Self.PopulariryPfProgram" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [PopulariryPfProgram].[TourTheme] AS [TourTheme], 
+    [PopulariryPfProgram].[PupolarityOfProgram] AS [PupolarityOfProgram]
+    FROM [dbo].[PopulariryPfProgram] AS [PopulariryPfProgram]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__HallsInTo__TourP__45F365D3" Association="Self.FK__HallsInTo__TourP__45F365D3">
+            <End Role="TourPrograms" EntitySet="TourPrograms" />
+            <End Role="HallsInTourPrograms" EntitySet="HallsInTourPrograms" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Staff__Post__47DBAE45" Association="Self.FK__Staff__Post__47DBAE45">
+            <End Role="Posts" EntitySet="Posts" />
+            <End Role="Staff" EntitySet="Staff" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TourEntri__Guide__48CFD27E" Association="Self.FK__TourEntri__Guide__48CFD27E">
+            <End Role="Staff" EntitySet="Staff" />
+            <End Role="TourEntries" EntitySet="TourEntries" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TourEntri__TourP__49C3F6B7" Association="Self.FK__TourEntri__TourP__49C3F6B7">
+            <End Role="TourPrograms" EntitySet="TourPrograms" />
+            <End Role="TourEntries" EntitySet="TourEntries" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Залы в экск__Зал__3B75D760" Association="Self.FK__Залы в экск__Зал__3B75D760">
+            <End Role="Halls" EntitySet="Halls" />
+            <End Role="HallsInTourPrograms" EntitySet="HallsInTourPrograms" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Экспонаты п__Зал__45F365D3" Association="Self.FK__Экспонаты п__Зал__45F365D3">
+            <End Role="Halls" EntitySet="Halls" />
+            <End Role="ExhibitsInHalls" EntitySet="ExhibitsInHalls" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Экспонаты__Автор__4222D4EF" Association="Self.FK__Экспонаты__Автор__4222D4EF">
+            <End Role="Authors" EntitySet="Authors" />
+            <End Role="Exhibits" EntitySet="Exhibits" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Экспонаты__Истор__403A8C7D" Association="Self.FK__Экспонаты__Истор__403A8C7D">
+            <End Role="HistoricalEpochs" EntitySet="HistoricalEpochs" />
+            <End Role="Exhibits" EntitySet="Exhibits" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Экспонаты__Стран__412EB0B6" Association="Self.FK__Экспонаты__Стран__412EB0B6">
+            <End Role="Countries" EntitySet="Countries" />
+            <End Role="Exhibits" EntitySet="Exhibits" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Экспонаты__Экспо__47DBAE45" Association="Self.FK__Экспонаты__Экспо__47DBAE45">
+            <End Role="Exhibits" EntitySet="Exhibits" />
+            <End Role="ExhibitsInHalls" EntitySet="ExhibitsInHalls" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Экспонаты__Экспо__49C3F6B7" Association="Self.FK__Экспонаты__Экспо__49C3F6B7">
+            <End Role="Exhibits" EntitySet="Exhibits" />
+            <End Role="ExhibitsInStoreroom" EntitySet="ExhibitsInStoreroom" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Экспонаты_Тип" Association="Self.FK_Экспонаты_Тип">
+            <End Role="ExhibitsTypes" EntitySet="ExhibitsTypes" />
+            <End Role="Exhibits" EntitySet="Exhibits" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HistoricalMuseumModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Authors">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FIOAuthor" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Exhibits" Relationship="Self.FK__Экспонаты__Автор__4222D4EF" FromRole="Authors" ToRole="Exhibits" />
+        </EntityType>
+        <EntityType Name="Countries">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Country" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Exhibits" Relationship="Self.FK__Экспонаты__Стран__412EB0B6" FromRole="Countries" ToRole="Exhibits" />
+        </EntityType>
+        <EntityType Name="Exhibits">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Exhibit" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ExhibitType" Type="Int32" Nullable="false" />
+          <Property Name="Author" Type="Int32" />
+          <Property Name="HistoricalEpoch" Type="Int32" Nullable="false" />
+          <Property Name="CreationCountry" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Authors" Relationship="Self.FK__Экспонаты__Автор__4222D4EF" FromRole="Exhibits" ToRole="Authors" />
+          <NavigationProperty Name="Countries" Relationship="Self.FK__Экспонаты__Стран__412EB0B6" FromRole="Exhibits" ToRole="Countries" />
+          <NavigationProperty Name="HistoricalEpochs" Relationship="Self.FK__Экспонаты__Истор__403A8C7D" FromRole="Exhibits" ToRole="HistoricalEpochs" />
+          <NavigationProperty Name="ExhibitsInHalls" Relationship="Self.FK__Экспонаты__Экспо__47DBAE45" FromRole="Exhibits" ToRole="ExhibitsInHalls" />
+          <NavigationProperty Name="ExhibitsInStoreroom" Relationship="Self.FK__Экспонаты__Экспо__49C3F6B7" FromRole="Exhibits" ToRole="ExhibitsInStoreroom" />
+          <NavigationProperty Name="ExhibitsTypes" Relationship="Self.FK_Экспонаты_Тип" FromRole="Exhibits" ToRole="ExhibitsTypes" />
+        </EntityType>
+        <EntityType Name="ExhibitsInHalls">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Hall" Type="Int32" Nullable="false" />
+          <Property Name="Exhibit" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Exhibits" Relationship="Self.FK__Экспонаты__Экспо__47DBAE45" FromRole="ExhibitsInHalls" ToRole="Exhibits" />
+          <NavigationProperty Name="Halls" Relationship="Self.FK__Экспонаты_п__Зал__45F365D3" FromRole="ExhibitsInHalls" ToRole="Halls" />
+        </EntityType>
+        <EntityType Name="ExhibitsInStoreroom">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Exhibit" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Exhibits" Relationship="Self.FK__Экспонаты__Экспо__49C3F6B7" FromRole="ExhibitsInStoreroom" ToRole="Exhibits" />
+        </EntityType>
+        <EntityType Name="ExhibitsTypes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Exhibits" Relationship="Self.FK_Экспонаты_Тип" FromRole="ExhibitsTypes" ToRole="Exhibits" />
+        </EntityType>
+        <EntityType Name="Halls">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Theme" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="ExhibitsInHalls" Relationship="Self.FK__Экспонаты_п__Зал__45F365D3" FromRole="Halls" ToRole="ExhibitsInHalls" />
+          <NavigationProperty Name="HallsInTourPrograms" Relationship="Self.FK__Залы_в_экск__Зал__3B75D760" FromRole="Halls" ToRole="HallsInTourPrograms" />
+        </EntityType>
+        <EntityType Name="HallsInTourPrograms">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TourProgram" Type="Int32" Nullable="false" />
+          <Property Name="Hall" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Halls" Relationship="Self.FK__Залы_в_экск__Зал__3B75D760" FromRole="HallsInTourPrograms" ToRole="Halls" />
+          <NavigationProperty Name="TourPrograms" Relationship="Self.FK__HallsInTo__TourP__45F365D3" FromRole="HallsInTourPrograms" ToRole="TourPrograms" />
+        </EntityType>
+        <EntityType Name="HistoricalEpochs">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Epoch" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Exhibits" Relationship="Self.FK__Экспонаты__Истор__403A8C7D" FromRole="HistoricalEpochs" ToRole="Exhibits" />
+        </EntityType>
+        <EntityType Name="Posts">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Post" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Staff" Relationship="Self.FK__Staff__Post__47DBAE45" FromRole="Posts" ToRole="Staff" />
+        </EntityType>
+        <EntityType Name="Staff">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FIOStaff" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Post" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Posts" Relationship="Self.FK__Staff__Post__47DBAE45" FromRole="Staff" ToRole="Posts" />
+          <NavigationProperty Name="TourEntries" Relationship="Self.FK__TourEntri__Guide__48CFD27E" FromRole="Staff" ToRole="TourEntries" />
+        </EntityType>
+        <EntityType Name="TourEntries">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DateAndTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="TourProgram" Type="Int32" Nullable="false" />
+          <Property Name="Guide" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Staff" Relationship="Self.FK__TourEntri__Guide__48CFD27E" FromRole="TourEntries" ToRole="Staff" />
+          <NavigationProperty Name="TourPrograms" Relationship="Self.FK__TourEntri__TourP__49C3F6B7" FromRole="TourEntries" ToRole="TourPrograms" />
+        </EntityType>
+        <EntityType Name="TourPrograms">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TourTheme" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="HallsInTourPrograms" Relationship="Self.FK__HallsInTo__TourP__45F365D3" FromRole="TourPrograms" ToRole="HallsInTourPrograms" />
+          <NavigationProperty Name="TourEntries" Relationship="Self.FK__TourEntri__TourP__49C3F6B7" FromRole="TourPrograms" ToRole="TourEntries" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="User" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GuidedToursView">
+          <Key>
+            <PropertyRef Name="FIOStaff" />
+          </Key>
+          <Property Name="FIOStaff" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="GuidedTours" Type="Int32" />
+        </EntityType>
+        <EntityType Name="PopulariryPfProgram">
+          <Key>
+            <PropertyRef Name="TourTheme" />
+          </Key>
+          <Property Name="TourTheme" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PupolarityOfProgram" Type="Int32" />
+        </EntityType>
+        <Association Name="FK__Экспонаты__Автор__4222D4EF">
+          <End Role="Authors" Type="Self.Authors" Multiplicity="0..1" />
+          <End Role="Exhibits" Type="Self.Exhibits" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Authors">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Exhibits">
+              <PropertyRef Name="Author" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Экспонаты__Стран__412EB0B6">
+          <End Role="Countries" Type="Self.Countries" Multiplicity="1" />
+          <End Role="Exhibits" Type="Self.Exhibits" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Countries">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Exhibits">
+              <PropertyRef Name="CreationCountry" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Экспонаты__Истор__403A8C7D">
+          <End Role="HistoricalEpochs" Type="Self.HistoricalEpochs" Multiplicity="1" />
+          <End Role="Exhibits" Type="Self.Exhibits" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HistoricalEpochs">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Exhibits">
+              <PropertyRef Name="HistoricalEpoch" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Экспонаты__Экспо__47DBAE45">
+          <End Role="Exhibits" Type="Self.Exhibits" Multiplicity="1" />
+          <End Role="ExhibitsInHalls" Type="Self.ExhibitsInHalls" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Exhibits">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ExhibitsInHalls">
+              <PropertyRef Name="Exhibit" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Экспонаты__Экспо__49C3F6B7">
+          <End Role="Exhibits" Type="Self.Exhibits" Multiplicity="1" />
+          <End Role="ExhibitsInStoreroom" Type="Self.ExhibitsInStoreroom" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Exhibits">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ExhibitsInStoreroom">
+              <PropertyRef Name="Exhibit" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Экспонаты_Тип">
+          <End Role="ExhibitsTypes" Type="Self.ExhibitsTypes" Multiplicity="1" />
+          <End Role="Exhibits" Type="Self.Exhibits" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExhibitsTypes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Exhibits">
+              <PropertyRef Name="ExhibitType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Экспонаты_п__Зал__45F365D3">
+          <End Role="Halls" Type="Self.Halls" Multiplicity="1" />
+          <End Role="ExhibitsInHalls" Type="Self.ExhibitsInHalls" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Halls">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ExhibitsInHalls">
+              <PropertyRef Name="Hall" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Залы_в_экск__Зал__3B75D760">
+          <End Role="Halls" Type="Self.Halls" Multiplicity="1" />
+          <End Role="HallsInTourPrograms" Type="Self.HallsInTourPrograms" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Halls">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="HallsInTourPrograms">
+              <PropertyRef Name="Hall" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HallsInTo__TourP__45F365D3">
+          <End Role="TourPrograms" Type="Self.TourPrograms" Multiplicity="1" />
+          <End Role="HallsInTourPrograms" Type="Self.HallsInTourPrograms" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TourPrograms">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="HallsInTourPrograms">
+              <PropertyRef Name="TourProgram" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Staff__Post__47DBAE45">
+          <End Role="Posts" Type="Self.Posts" Multiplicity="1" />
+          <End Role="Staff" Type="Self.Staff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Posts">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Staff">
+              <PropertyRef Name="Post" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TourEntri__Guide__48CFD27E">
+          <End Role="Staff" Type="Self.Staff" Multiplicity="1" />
+          <End Role="TourEntries" Type="Self.TourEntries" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Staff">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="TourEntries">
+              <PropertyRef Name="Guide" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TourEntri__TourP__49C3F6B7">
+          <End Role="TourPrograms" Type="Self.TourPrograms" Multiplicity="1" />
+          <End Role="TourEntries" Type="Self.TourEntries" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TourPrograms">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="TourEntries">
+              <PropertyRef Name="TourProgram" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MuseumEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Authors" EntityType="Self.Authors" />
+          <EntitySet Name="Countries" EntityType="Self.Countries" />
+          <EntitySet Name="Exhibits" EntityType="Self.Exhibits" />
+          <EntitySet Name="ExhibitsInHalls" EntityType="Self.ExhibitsInHalls" />
+          <EntitySet Name="ExhibitsInStoreroom" EntityType="Self.ExhibitsInStoreroom" />
+          <EntitySet Name="ExhibitsTypes" EntityType="Self.ExhibitsTypes" />
+          <EntitySet Name="Halls" EntityType="Self.Halls" />
+          <EntitySet Name="HallsInTourPrograms" EntityType="Self.HallsInTourPrograms" />
+          <EntitySet Name="HistoricalEpochs" EntityType="Self.HistoricalEpochs" />
+          <EntitySet Name="Posts" EntityType="Self.Posts" />
+          <EntitySet Name="Staff" EntityType="Self.Staff" />
+          <EntitySet Name="TourEntries" EntityType="Self.TourEntries" />
+          <EntitySet Name="TourPrograms" EntityType="Self.TourPrograms" />
+          <EntitySet Name="Users" EntityType="Self.Users" />
+          <EntitySet Name="GuidedToursView" EntityType="Self.GuidedToursView" />
+          <EntitySet Name="PopulariryPfProgram" EntityType="Self.PopulariryPfProgram" />
+          <AssociationSet Name="FK__Экспонаты__Автор__4222D4EF" Association="Self.FK__Экспонаты__Автор__4222D4EF">
+            <End Role="Authors" EntitySet="Authors" />
+            <End Role="Exhibits" EntitySet="Exhibits" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Экспонаты__Стран__412EB0B6" Association="Self.FK__Экспонаты__Стран__412EB0B6">
+            <End Role="Countries" EntitySet="Countries" />
+            <End Role="Exhibits" EntitySet="Exhibits" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Экспонаты__Истор__403A8C7D" Association="Self.FK__Экспонаты__Истор__403A8C7D">
+            <End Role="HistoricalEpochs" EntitySet="HistoricalEpochs" />
+            <End Role="Exhibits" EntitySet="Exhibits" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Экспонаты__Экспо__47DBAE45" Association="Self.FK__Экспонаты__Экспо__47DBAE45">
+            <End Role="Exhibits" EntitySet="Exhibits" />
+            <End Role="ExhibitsInHalls" EntitySet="ExhibitsInHalls" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Экспонаты__Экспо__49C3F6B7" Association="Self.FK__Экспонаты__Экспо__49C3F6B7">
+            <End Role="Exhibits" EntitySet="Exhibits" />
+            <End Role="ExhibitsInStoreroom" EntitySet="ExhibitsInStoreroom" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Экспонаты_Тип" Association="Self.FK_Экспонаты_Тип">
+            <End Role="ExhibitsTypes" EntitySet="ExhibitsTypes" />
+            <End Role="Exhibits" EntitySet="Exhibits" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Экспонаты_п__Зал__45F365D3" Association="Self.FK__Экспонаты_п__Зал__45F365D3">
+            <End Role="Halls" EntitySet="Halls" />
+            <End Role="ExhibitsInHalls" EntitySet="ExhibitsInHalls" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Залы_в_экск__Зал__3B75D760" Association="Self.FK__Залы_в_экск__Зал__3B75D760">
+            <End Role="Halls" EntitySet="Halls" />
+            <End Role="HallsInTourPrograms" EntitySet="HallsInTourPrograms" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HallsInTo__TourP__45F365D3" Association="Self.FK__HallsInTo__TourP__45F365D3">
+            <End Role="TourPrograms" EntitySet="TourPrograms" />
+            <End Role="HallsInTourPrograms" EntitySet="HallsInTourPrograms" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Staff__Post__47DBAE45" Association="Self.FK__Staff__Post__47DBAE45">
+            <End Role="Posts" EntitySet="Posts" />
+            <End Role="Staff" EntitySet="Staff" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TourEntri__Guide__48CFD27E" Association="Self.FK__TourEntri__Guide__48CFD27E">
+            <End Role="Staff" EntitySet="Staff" />
+            <End Role="TourEntries" EntitySet="TourEntries" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TourEntri__TourP__49C3F6B7" Association="Self.FK__TourEntri__TourP__49C3F6B7">
+            <End Role="TourPrograms" EntitySet="TourPrograms" />
+            <End Role="TourEntries" EntitySet="TourEntries" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище HistoricalMuseumModelContainer" CdmEntityContainer="MuseumEntities">
+          <EntitySetMapping Name="Authors">
+            <EntityTypeMapping TypeName="HistoricalMuseumModel.Authors">
+              <MappingFragment StoreEntitySet="Authors">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="FIOAuthor" ColumnName="FIOAuthor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Countries">
+            <EntityTypeMapping TypeName="HistoricalMuseumModel.Countries">
+              <MappingFragment StoreEntitySet="Countries">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Exhibits">
+            <EntityTypeMapping TypeName="HistoricalMuseumModel.Exhibits">
+              <MappingFragment StoreEntitySet="Exhibits">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Exhibit" ColumnName="Exhibit" />
+                <ScalarProperty Name="ExhibitType" ColumnName="ExhibitType" />
+                <ScalarProperty Name="Author" ColumnName="Author" />
+                <ScalarProperty Name="HistoricalEpoch" ColumnName="HistoricalEpoch" />
+                <ScalarProperty Name="CreationCountry" ColumnName="CreationCountry" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ExhibitsInHalls">
+            <EntityTypeMapping TypeName="HistoricalMuseumModel.ExhibitsInHalls">
+              <MappingFragment StoreEntitySet="ExhibitsInHalls">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Hall" ColumnName="Hall" />
+                <ScalarProperty Name="Exhibit" ColumnName="Exhibit" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ExhibitsInStoreroom">
+            <EntityTypeMapping TypeName="HistoricalMuseumModel.ExhibitsInStoreroom">
+              <MappingFragment StoreEntitySet="ExhibitsInStoreroom">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Exhibit" ColumnName="Exhibit" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ExhibitsTypes">
+            <EntityTypeMapping TypeName="HistoricalMuseumModel.ExhibitsTypes">
+              <MappingFragment StoreEntitySet="ExhibitsTypes">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Halls">
+            <EntityTypeMapping TypeName="HistoricalMuseumModel.Halls">
+              <MappingFragment StoreEntitySet="Halls">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Theme" ColumnName="Theme" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HallsInTourPrograms">
+            <EntityTypeMapping TypeName="HistoricalMuseumModel.HallsInTourPrograms">
+              <MappingFragment StoreEntitySet="HallsInTourPrograms">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="TourProgram" ColumnName="TourProgram" />
+                <ScalarProperty Name="Hall" ColumnName="Hall" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HistoricalEpochs">
+            <EntityTypeMapping TypeName="HistoricalMuseumModel.HistoricalEpochs">
+              <MappingFragment StoreEntitySet="HistoricalEpochs">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Epoch" ColumnName="Epoch" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Posts">
+            <EntityTypeMapping TypeName="HistoricalMuseumModel.Posts">
+              <MappingFragment StoreEntitySet="Posts">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Post" ColumnName="Post" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Staff">
+            <EntityTypeMapping TypeName="HistoricalMuseumModel.Staff">
+              <MappingFragment StoreEntitySet="Staff">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="FIOStaff" ColumnName="FIOStaff" />
+                <ScalarProperty Name="Post" ColumnName="Post" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TourEntries">
+            <EntityTypeMapping TypeName="HistoricalMuseumModel.TourEntries">
+              <MappingFragment StoreEntitySet="TourEntries">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="DateAndTime" ColumnName="DateAndTime" />
+                <ScalarProperty Name="TourProgram" ColumnName="TourProgram" />
+                <ScalarProperty Name="Guide" ColumnName="Guide" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TourPrograms">
+            <EntityTypeMapping TypeName="HistoricalMuseumModel.TourPrograms">
+              <MappingFragment StoreEntitySet="TourPrograms">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="TourTheme" ColumnName="TourTheme" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="HistoricalMuseumModel.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="User" ColumnName="User" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GuidedToursView">
+            <EntityTypeMapping TypeName="HistoricalMuseumModel.GuidedToursView">
+              <MappingFragment StoreEntitySet="GuidedToursView">
+                <ScalarProperty Name="FIOStaff" ColumnName="FIOStaff" />
+                <ScalarProperty Name="GuidedTours" ColumnName="GuidedTours" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PopulariryPfProgram">
+            <EntityTypeMapping TypeName="HistoricalMuseumModel.PopulariryPfProgram">
+              <MappingFragment StoreEntitySet="PopulariryPfProgram">
+                <ScalarProperty Name="TourTheme" ColumnName="TourTheme" />
+                <ScalarProperty Name="PupolarityOfProgram" ColumnName="PupolarityOfProgram" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

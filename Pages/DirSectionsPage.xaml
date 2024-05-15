@@ -1,0 +1,59 @@
+﻿<Page x:Class="HistoricalMuseum.DirSectionsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:HistoricalMuseum"
+      mc:Ignorable="d" 
+      d:DesignHeight="550" d:DesignWidth="900"
+      Title="DirSectionsPage" Background="#FFF8ECE3">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="110*"/>
+            <ColumnDefinition Width="145*"/>
+            <ColumnDefinition Width="175*"/>
+            <ColumnDefinition Width="20*"/>
+            <ColumnDefinition Width="20*"/>
+            <ColumnDefinition Width="175*"/>
+            <ColumnDefinition Width="145*"/>
+            <ColumnDefinition Width="110*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="55*"/>
+            <RowDefinition Height="210*"/>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="210*"/>
+            <RowDefinition Height="55*"/>
+        </Grid.RowDefinitions>
+
+        <Border Name="brdrBtnMuseum" Margin="20,25" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" CornerRadius="5" UseLayoutRounding="False" HorizontalAlignment="Right" Background="#FFEEDCCA" BorderBrush="#FF98826C" BorderThickness="3" MouseDown="btnMuseum_Click" MouseEnter="btn_MouseEnter" MouseLeave="btn_MouseLeave" MaxWidth="600" MaxHeight="250">
+            <Viewbox Margin="70,5,70,5" MinWidth="50">
+                <TextBlock Text="Музей" FontFamily="Constantia" Foreground="#FFC8844E" FontWeight="Bold" MaxHeight="50"/>
+            </Viewbox>
+        </Border>
+
+        <Border Name="brdrBtnTours" Margin="20,25" Grid.Row="1" Grid.Column="5" Grid.ColumnSpan="2" CornerRadius="5" UseLayoutRounding="False" HorizontalAlignment="Left" Background="#FFEEDCCA" BorderBrush="#FF98826C" BorderThickness="3" MouseDown="btnTours_Click" MouseEnter="btn_MouseEnter" MouseLeave="btn_MouseLeave" MaxWidth="600" MaxHeight="250">
+            <Viewbox Margin="40,5,40,5" MinWidth="50">
+                <TextBlock Text="Экскурсии" FontFamily="Constantia" Foreground="#FFC8844E" FontWeight="Bold"/>
+            </Viewbox>
+        </Border>
+
+        <Border Name="brdrBtnRep1" Margin="20,25" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" CornerRadius="5" UseLayoutRounding="False" HorizontalAlignment="Right" Background="#FFEEDCCA" BorderBrush="#FF98826C" BorderThickness="3" MouseDown="Report_Click" MouseEnter="btn_MouseEnter" MouseLeave="btn_MouseLeave" MaxWidth="600" MaxHeight="250">
+            <Viewbox Stretch="Uniform">
+                <TextBlock Padding="5" Text="Отчёт по проведённым экскурсиям" TextAlignment="Center" FontFamily="Constantia" Foreground="#FFC8844E" FontWeight="Bold" TextWrapping="Wrap" HorizontalAlignment="Center" MaxWidth="200"/>
+            </Viewbox>
+        </Border>
+
+        <Border Name="brdrBtnRep2" Margin="20,25" Grid.Row="3" Grid.Column="5" Grid.ColumnSpan="2" CornerRadius="5" UseLayoutRounding="False" HorizontalAlignment="Left" Background="#FFEEDCCA" BorderBrush="#FF98826C" BorderThickness="3" MouseDown="Report_Click_1" MouseEnter="btn_MouseEnter" MouseLeave="btn_MouseLeave" MaxWidth="600" MaxHeight="250">
+            <Viewbox Stretch="Uniform">
+                <TextBlock Padding="10" Text="Отчёт по посещению экскурсий" TextAlignment="Center" FontFamily="Constantia" Foreground="#FFC8844E" FontWeight="Bold" TextWrapping="Wrap" HorizontalAlignment="Center" MaxWidth="200"/>
+            </Viewbox>
+        </Border>
+
+        <Border Name="brdrBtnExit" Margin="10,0" Grid.Row="4" Grid.Column="7" VerticalAlignment="Center" HorizontalAlignment="Center" MouseDown="btnExit_Click" MaxWidth="200" MaxHeight="150">
+            <Viewbox>
+                <TextBlock Name="btnExit" Text="Выйти" FontFamily="Constantia" Foreground="#FF6A6A6A" TextDecorations="Underline" MouseEnter="btnExit_MouseEnter" MouseLeave="btnExit_MouseLeave"/>
+            </Viewbox>
+        </Border>
+    </Grid>
+</Page>

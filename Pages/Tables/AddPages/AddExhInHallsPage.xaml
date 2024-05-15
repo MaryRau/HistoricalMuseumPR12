@@ -1,0 +1,54 @@
+﻿<Page x:Class="HistoricalMuseum.Pages.AddToTables.AddExhInHallsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:HistoricalMuseum.Pages.AddToTables"
+      mc:Ignorable="d" 
+      d:DesignHeight="550" d:DesignWidth="900"
+      Title="AddExhInHallsPage" Background="#FFF8ECE3">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="220*"/>
+            <RowDefinition Height="220*"/>
+            <RowDefinition Height="110*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150*"/>
+            <ColumnDefinition Width="75*"/>
+            <ColumnDefinition Width="450*"/>
+            <ColumnDefinition Width="75*"/>
+            <ColumnDefinition Width="150*"/>
+        </Grid.ColumnDefinitions>
+
+        <Viewbox Margin="120,0,0,10" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" MaxWidth="350" MaxHeight="200" Grid.ColumnSpan="2">
+            <TextBlock Text="Зал:" FontSize="50" TextAlignment="Center" FontFamily="Constantia" Foreground="#FF6A6A6A" MinHeight="60" MinWidth="110"/>
+        </Viewbox>
+
+        <Viewbox Margin="25,0,40,0" Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="3" MaxHeight="115" MinHeight="100" VerticalAlignment="Center" HorizontalAlignment="Left">
+            <ComboBox Name="cmbHall" FontSize="15" IsEditable="True" VerticalContentAlignment="Center" Background="#FFEEDCCA" TextBlock.FontFamily="Constantia" BorderBrush="#FF98826C" Foreground="#FF6A6A6A" BorderThickness="1" MinWidth="400" MinHeight="35"/>
+        </Viewbox>
+
+        <Viewbox Margin="20,0,5,20" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" MaxWidth="450" MaxHeight="200" Grid.ColumnSpan="2">
+            <TextBlock Text="Экспонат:" FontSize="50" TextAlignment="Center" FontFamily="Constantia" Foreground="#FF6A6A6A" MinHeight="60" MinWidth="155"/>
+        </Viewbox>
+
+        <Viewbox Margin="25,0,40,20" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="3" MaxHeight="115" MinHeight="100" VerticalAlignment="Center" HorizontalAlignment="Left">
+            <ComboBox Name="cmbExh" FontSize="15" IsEditable="True" VerticalContentAlignment="Center" Background="#FFEEDCCA" TextBlock.FontFamily="Constantia" BorderBrush="#FF98826C" Foreground="#FF6A6A6A" BorderThickness="1" MinWidth="400" MinHeight="35"/>
+        </Viewbox>
+
+        <Border Name="borderBtnSave" HorizontalAlignment="Right" VerticalAlignment="Bottom" Grid.Row="3" CornerRadius="5" UseLayoutRounding="False" MouseDown="ButtonSave_Click" MouseEnter="btn_MouseEnter" MouseLeave="btn_MouseLeave" Background="#FFEEDCCA" BorderBrush="#FF98826C" BorderThickness="3" Grid.Column="4" MaxWidth="350" MaxHeight="200">
+            <Viewbox Margin="10,15">
+                <TextBlock Name="btnSave" Text="Сохранить" FontSize="50" FontWeight="Bold" TextAlignment="Center" TextBlock.FontFamily="Constantia" Foreground="#FFC8844E" VerticalAlignment="Center"/>
+            </Viewbox>
+        </Border>
+
+        <Border Name="borderBtnCancel" HorizontalAlignment="Left" VerticalAlignment="Bottom" Grid.Row="3" CornerRadius="5" UseLayoutRounding="False" MouseDown="ButtonCancel_Click" MouseEnter="btn_MouseEnter" MouseLeave="btn_MouseLeave" Background="#FFEEDCCA" BorderBrush="#FF98826C" BorderThickness="3" MaxWidth="350" MaxHeight="200">
+            <Viewbox Margin="25,15">
+                <TextBlock Name="btnCancel" Text="Отмена" FontSize="50" FontWeight="Bold" TextAlignment="Center" TextBlock.FontFamily="Constantia" Foreground="#FFC8844E" VerticalAlignment="Center"/>
+            </Viewbox>
+        </Border>
+    </Grid>
+
+</Page>
